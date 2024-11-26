@@ -1,0 +1,71 @@
+{% extends "componentes/header.html" %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="{% static 'estiloHeader.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Inicio{% endblock %}</title>
+</head>
+
+<body>
+    {% block content %}
+    {% if user.is_authenticated %}
+    {% if user.admin  or user.tecnico %}
+    <script>window.location.href = '/Administracion/';</script>
+    {% endif %}
+    <script>window.location.href = '/Inicio/{{ user.id }}';</script>
+    {% endif %}
+    <div class="Banner">
+        <div class="contLeft"></div>
+        <div class="contRight">
+            <h1>Bienvenido a </h1>
+            <h1>Amazon Prime Call Center</h1>
+            <p>Nos alegra que estés aquí. Nuestro equipo está listo para ofrecerte soporte en todo lo que necesites.
+                 Desde asistencia con tu cuenta hasta resolver dudas sobre nuestro catálogo de contenido, estamos aquí
+                  para ayudarte de manera rápida y eficiente.
+                   Explora nuestras secciones de ayuda o contáctanos directamente a través de nuestras líneas de atención para
+                    obtener respuestas inmediatas. ¡Tu satisfacción es nuestra prioridad!</p>
+            <div class="contBtn">
+                <button id="btnIngresar" onclick="window.location.href = '/Login/'">Ingresar</button>
+            </div>
+        </div>
+    </div>
+    <div class="mainCard">
+        <div class="iCard"></div>
+        <div class="dCard">
+            <h1>Atención 24/7</h1>
+            <p>Nuestro Call Center de Amazon Prime Video está listo para ayudarte con cualquier duda o consulta que tengas
+                 sobre nuestro servicio. Ya sea que necesites asistencia con tu cuenta, la suscripción o cualquier otro tema,
+                  estamos aquí para brindarte soporte personalizado.
+                   Llámanos y un miembro de nuestro equipo te asistirá rápidamente. ¡Estamos disponibles para ti!</p>
+        </div>
+    </div>
+    <div class="finalBody">
+        <h1>Comunicate con nosotros</h1>
+        <p>Escribenos y nuestros profesionales solucionaran tu problema en tan solo un momento!</p>
+        <div class="contBtn" style="margin-top: 20px; margin-bottom: 10px;">
+            <button id="btnIngresar" onclick="window.location.href = '/Login/'">Ingresar</button>
+        </div>
+    </div>
+    <footer>
+        <ul>
+            <li><a style="color: #4a78f8;">Contacto</a></li>
+            <li><a>Instagram</a></li>
+            <li><a>Facebook</a></li>
+        </ul>
+        <ul>
+            <li><a style="color: #4a78f8;">Ubicación</a></li>
+            <li><a> Av. Américo Vespucio 974, Maipú, Región Metropolitana</a></li>
+        </ul>
+        <ul>
+            <li><a style="color: #4a78f8;">© 1996-2024, Amazon.com, Inc. o sus filiales</a></li>
+        </ul>
+    </footer>
+    {% endblock %}
+</body>
+
+</html>
